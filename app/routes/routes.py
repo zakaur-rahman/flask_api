@@ -68,6 +68,6 @@ def upload():
 @authenticate
 def get_images():
     collection = db["images"]
-    recent_documents = collection.find().sort("upload_date", 1).limit(1)
+    recent_documents = collection.find().sort("_id",-1).limit(1)
     data = [{"image_name": doc["image_name"], "image_url": doc["image_url"]} for doc in recent_documents]
     return jsonify(data)
